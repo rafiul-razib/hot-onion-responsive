@@ -1,0 +1,19 @@
+.Category{
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+
+}
+
+.Category li{
+    list-style-type: none;
+    text-decoration: none;
+    margin-left: 1em;
+    margin-right: 1em;
+    color: dimgrey;
+    font-weight: 500;
+}
+
+.Category li:hover{
+    text-decoration: underline;
+}

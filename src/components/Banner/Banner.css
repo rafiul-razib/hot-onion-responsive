@@ -1,0 +1,15 @@
+.banner{
+    background-image: url(../../Image/bannerbackground.png);
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-pink{
+    background-color: darksalmon;
+}
+
+.search-food{
+    border-bottom: 30px;
+}
