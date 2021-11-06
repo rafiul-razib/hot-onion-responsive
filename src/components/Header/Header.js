@@ -3,7 +3,8 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from '../../Image/logo2.png'
 
-const Header = () => {
+const Header = (props) => {
+    const cart = props.cart
     return (
         <>
               <Navbar bg="light" variant="light" sticky='top'>
@@ -14,7 +15,7 @@ const Header = () => {
                     <Nav className="ms-auto">
                     <Nav.Link as={Link} to="/home">Home</Nav.Link>
                     <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
+                    <Nav.Link as={Link} to="/cart">Cart<sup>{cart.length}</sup></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

@@ -17,11 +17,11 @@ function App() {
     setCart(newCart);
   }
 
-  console.log(cart)
+
   return (
     <div className="App">
       <BrowserRouter>
-      <Header></Header>
+      <Header cart = {cart}></Header>
       <Switch>
         <Route exact path="/">
         <Banner></Banner>
