@@ -10,12 +10,7 @@ import Cart from './components/Cart/Cart';
 
 function App() {
   const[menu]= useFoods();
-  const[clickedFood, setClickedFood] = useState({});
   const[cart, setCart] =useState([])
-
-  const handleClickedFood = food =>{
-    setClickedFood(food)
-  }
 
   const handleAddToCart = food =>{
     const newCart = [...cart, food];
@@ -34,10 +29,10 @@ function App() {
         </Route>
         <Route path="/home">
         <Banner></Banner>
-        <Menu menu={menu} handleClickedFood={handleClickedFood}></Menu>
+        <Menu menu={menu}></Menu>
         </Route>
         <Route path="/details/:foodId">
-          <SingleFood clickedFood={clickedFood} handleAddToCart={handleAddToCart}></SingleFood>
+          <SingleFood handleAddToCart={handleAddToCart}></SingleFood>
         </Route>
         <Route path="/cart">
           <Cart cart={cart}></Cart>

@@ -6,7 +6,6 @@ import './Menu.css'
 
 const Menu = (props) => {
     const menu = props.menu;
-    const handleClickedFood = props.handleClickedFood;
     const[category, setCategory] = useState('Lunch');
     // const [menu] = useFoods();
     // console.log(menu)
@@ -23,7 +22,7 @@ const Menu = (props) => {
            
                 <Row md={3} lg={3} xs={1} className="g-4 mx-auto">
                 {
-                    displayFood.map(meal => <Meal key={meal.id} meal={meal} handleClickedFood={handleClickedFood}></Meal>)
+                    displayFood.map(meal => <Meal key={meal.id} meal={meal}></Meal>)
                 }
                 </Row>
 
