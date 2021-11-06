@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 
 
 const SingleFood = (props) => {
-    const {img, name, price} = props.clickedFood;
+    const{foodId} = useParams();
+    
+    const[menu, setMenu] = useState([]);
+    const[clickedFood, setClickedFood]= useState({})
+
+    useEffect(()=>{
+        fetch('/fakeData.json')
+        .then(res => res.json())
+        .then(data => setMenu(data))
+    },[])
+
+    useEffect(()=>{
+        if(menu.length>0){
+            const clickedFood = menu.find(food => food.id == foodId)
+            setClickedFood(clickedFood)
+        }
+    },[menu]);
+
+    const {img, name, price} = clickedFood;
 
 
     const[count, setCount] = useState(1);
@@ -24,14 +43,14 @@ const SingleFood = (props) => {
         }
     }
 
-    const totalPrice = props.clickedFood.price * count;
+    const totalPrice = clickedFood.price * count;
 
     const orderedQuantity = count;
 
-    props.clickedFood.orderedQuantity =orderedQuantity;
+    clickedFood.orderedQuantity =orderedQuantity;
 
     return (
-   
+            
         <Card style={{ width: '60%', margin: 'auto'}} className="p-4 mt-2">
         <Row>
         <Col md={7}>
@@ -51,13 +70,13 @@ const SingleFood = (props) => {
 
             </Card.Text>
             <Link to='/cart'>
-            <Button variant="primary" onClick={()=>props.handleAddToCart(props.clickedFood)}>Add to cart</Button>
+            <Button variant="primary" onClick={()=>props.handleAddToCart(clickedFood)}>Add to cart</Button>
             </Link>
         </Card.Body>
         </Col>
         </Row>
         </Card>
-    );
+    )
 };
 
 export default SingleFood;
